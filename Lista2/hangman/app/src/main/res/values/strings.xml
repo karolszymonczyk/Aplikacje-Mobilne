@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Hangman</string>
+    <string-array name="words">
+        <item>komputer</item>
+        <item>zgadywanka</item>
+        <item>arcybiskup</item>
+        <item>ziemia</item>
+        <item>ziemniak</item>
+        <item>merkury</item>
+        <item>wenus</item>
+        <item>mars</item>
+        <item>niebo</item>
+        <item>alergiczny</item>
+        <item>argumencik </item>
+        <item>amorficzny</item>
+        <item>audytor</item>
+        <item>anegdota</item>
+        <item>album</item>
+        <item>skokomierz</item>
+        <item>woltomierz</item>
+        <item>pralka</item>
+        <item>lalka</item>
+        <item>kalka</item>
+        <item>rowerek</item>
+        <item>worek</item>
+        <item>wtorek</item>
+        <item>niemiecki</item>
+        <item>angielski</item>
+        <item>telefon</item>
+        <item>radio</item>
+        <item>kubeczek</item>
+        <item>woda</item>
+        <item>lampka</item>
+        <item>ekran</item>
+        <item>laptop</item>
+        <item>potop</item>
+        <item>pozytywka</item>
+        <item>dinozaur</item>
+        <item>klon</item>
+        <item>klan</item>
+        <item>zeszyt</item>
+        <item>skoroszyt</item>
+        <item>mama</item>
+        <item>drzewo</item>
+        <item>spodnie</item>
+        <item>biurko</item>
+        <item>centrala</item>
+        <item>kalosze</item>
+        <item>poduszka</item>
+        <item>wiatr</item>
+        <item>deszcz</item>
+        <item>maroko</item>
+        <item>data</item>
+        <item>narrator</item>
+    </string-array>
+</resources>
