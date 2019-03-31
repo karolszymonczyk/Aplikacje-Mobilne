@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        listview.setOnItemLongClickListener{ _,_, index, _ ->
+        listview.setOnItemLongClickListener { _, _, index, _ ->
             showConfirmation(index)
             true
         }
@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         taskAdapter = MyArrayAdapter(this, tasks)
         listview.adapter = taskAdapter
 
+        //template tasks
         tasks.add(ListItem("1", "work", 1, "19.19.1998", "05 : 11 pm"))
         tasks.add(ListItem("2", "home", 2, "20.19.1997", "03 : 11 am"))
         tasks.add(ListItem("3", "other", 1, "18.19.2010", "05 : 12 pm"))
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         val task = newTask.text.toString()
 
-        if(!task.isBlank()) {
+        if (!task.isBlank()) {
             showDialog(task, "other", 0, "none", "none", -1)
         }
     }
@@ -69,17 +70,28 @@ class MainActivity : AppCompatActivity() {
             deleteItem(index)
             Toast.makeText(applicationContext, "Task deleted!", Toast.LENGTH_SHORT).show()
         }
-//        builder.setNegativeButton(android.R.string.no) { dialog, which ->
-//            Toast.makeText(applicationContext, "Delete canceled", Toast.LENGTH_SHORT).show()
-//        }
         builder.setNeutralButton("Edit") { _, _ ->
-            showDialog(tasks[index].task, tasks[index].image, tasks[index].prior, tasks[index].date, tasks[index].time, index)
+            showDialog(
+                tasks[index].task,
+                tasks[index].image,
+                tasks[index].prior,
+                tasks[index].date,
+                tasks[index].time,
+                index
+            )
         }
         builder.show()
     }
 
     @SuppressLint("InflateParams", "SetTextI18n")
-    private fun showDialog(task: String, image: String, prior: Int, date: String, time: String, idx: Int) { //można to od razu do buttona przypisać se i potem dalszą logikę
+    private fun showDialog(
+        task: String,
+        image: String,
+        prior: Int,
+        date: String,
+        time: String,
+        idx: Int
+    ) {
 
         var timage = image
         var tprior = prior
@@ -109,7 +121,7 @@ class MainActivity : AppCompatActivity() {
             dl.pDate.text = sdf.format(cal.time)
             tdate = sdf.format(cal.time)
         }
-        val timeSetListener = TimePickerDialog.OnTimeSetListener{ _, hour, minute ->
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
             cal.set(Calendar.HOUR_OF_DAY, hour)
             cal.set(Calendar.MINUTE, minute)
             val sdf = SimpleDateFormat(myFormatTime, Locale.UK)
@@ -117,30 +129,33 @@ class MainActivity : AppCompatActivity() {
             ttime = sdf.format(cal.time)
         }
         dl.pDate.setOnClickListener {
-            DatePickerDialog(this,
-            dateSetListener,
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)).show()
+            DatePickerDialog(
+                this,
+                dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
         }
-        dl.pTime.setOnClickListener{
-            TimePickerDialog(this,
+        dl.pTime.setOnClickListener {
+            TimePickerDialog(
+                this,
                 timeSetListener,
                 cal.get(Calendar.HOUR_OF_DAY),
                 cal.get(Calendar.MINUTE),
-                false).show()
+                false
+            ).show()
         }
-        dl.bP0.setOnClickListener{ tprior = setPriorText(dl.pPrior, 0, "normal") }
-        dl.bP1.setOnClickListener{ tprior = setPriorText(dl.pPrior, 1, "important") }
-        dl.bP2.setOnClickListener{ tprior = setPriorText(dl.pPrior, 2, "very important") }
-        dl.bOther.setOnClickListener{ timage = setTypeText(dl.pType, "other") }
-        dl.bHome.setOnClickListener{ timage = setTypeText(dl.pType, "home") }
-        dl.bWork.setOnClickListener{ timage = setTypeText(dl.pType, "work") }
-        dl.bShopping.setOnClickListener{ timage = setTypeText(dl.pType, "shopping") }
-        dl.bDate.setOnClickListener{ timage = setTypeText(dl.pType, "date") }
-        builder.setPositiveButton("OK") {
-            _, _ ->
-            if(idx == -1) {
+        dl.bP0.setOnClickListener { tprior = setPriorText(dl.pPrior, 0, "normal") }
+        dl.bP1.setOnClickListener { tprior = setPriorText(dl.pPrior, 1, "important") }
+        dl.bP2.setOnClickListener { tprior = setPriorText(dl.pPrior, 2, "very important") }
+        dl.bOther.setOnClickListener { timage = setTypeText(dl.pType, "other") }
+        dl.bHome.setOnClickListener { timage = setTypeText(dl.pType, "home") }
+        dl.bWork.setOnClickListener { timage = setTypeText(dl.pType, "work") }
+        dl.bShopping.setOnClickListener { timage = setTypeText(dl.pType, "shopping") }
+        dl.bDate.setOnClickListener { timage = setTypeText(dl.pType, "date") }
+        builder.setPositiveButton("OK") { _, _ ->
+            if (idx == -1) {
                 addTask(task, timage, tprior, tdate, ttime)
                 newTask.setText("")
             } else {
@@ -153,13 +168,13 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
-    private fun setPriorText(view: View, prior: Int, text: String) : Int {
+    private fun setPriorText(view: View, prior: Int, text: String): Int {
         val tv = view as TextView
         tv.text = text
         return prior
     }
 
-    private fun setTypeText(view: View, text: String) : String {
+    private fun setTypeText(view: View, text: String): String {
         val tv = view as TextView
         tv.text = text
         return text
@@ -200,19 +215,33 @@ class MainActivity : AppCompatActivity() {
                 arrow.tag = "prio"
             }
             "date" -> {
-                tasks.sortWith(compareBy<ListItem> {it.date.takeLast(4)}.thenBy { it.date.takeLast(7).take(2) }.thenBy { it.date.take(2) })
+                tasks.sortWith(compareBy<ListItem> { it.date.takeLast(4) }.thenBy {
+                    it.date.takeLast(7).take(2)
+                }.thenBy { it.date.take(2) })
                 arrow.tag = "dateC"
             }
             "dateC" -> {
-                tasks.sortWith(compareByDescending<ListItem> {it.date.takeLast(4)}.thenByDescending { it.date.takeLast(7).take(2) }.thenByDescending { it.date.take(2) })
+                tasks.sortWith(compareByDescending<ListItem> { it.date.takeLast(4) }.thenByDescending {
+                    it.date.takeLast(
+                        7
+                    ).take(2)
+                }.thenByDescending { it.date.take(2) })
                 arrow.tag = "date"
             }
             "time" -> {
-                tasks.sortWith(compareBy<ListItem> { it.time.takeLast(2) }.thenBy { it.time.take(2) }.thenBy { it.time.takeLast(5).take(2) })
+                tasks.sortWith(compareBy<ListItem> { it.time.takeLast(2) }.thenBy { it.time.take(2) }.thenBy {
+                    it.time.takeLast(
+                        5
+                    ).take(2)
+                })
                 arrow.tag = "timeC"
             }
             "timeC" -> {
-                tasks.sortWith(compareByDescending<ListItem> { it.time.takeLast(2) }.thenByDescending { it.time.take(2) }.thenByDescending { it.time.takeLast(5).take(2) })
+                tasks.sortWith(compareByDescending<ListItem> { it.time.takeLast(2) }.thenByDescending { it.time.take(2) }.thenByDescending {
+                    it.time.takeLast(
+                        5
+                    ).take(2)
+                })
                 arrow.tag = "time"
             }
         }
@@ -221,7 +250,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setDefButtons() {
-        for (i in 0 .. 1) {
+        for (i in 0..1) {
             (buttons1.getChildAt(i) as ImageButton).setImageResource(arrows[0])
             (buttons2.getChildAt(i) as ImageButton).setImageResource(arrows[0])
         }
