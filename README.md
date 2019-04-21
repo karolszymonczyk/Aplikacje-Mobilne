@@ -28,3 +28,15 @@ Dodatkowe funkcje :
 * ustalenie priorytetów zadań
 * sortowanie po ikonce (typ zadania)
 * . . .
+
+## Lista 4
+### Zadanie 1
+Napisz aplikacje (galeria) przechowującą zdjęcia, każde zdjęcie dodatkowo zawiera krótki opis. Po uruchomieniu aplikacji, na początku pokazuje ona dostępne zdjęcia. Użytkownik może wybrać dowolną pozycję, aby zobaczyć większe zdjęcie i opis. Na ekranie dodatkowo, mamy możliwość ocenienia zdjęcia przez np. "gwiazdki". Aplikacja powinna natomiast obsługiwać:
+* co najmniej dwie aktywności
+* przekazywać informacje z jednej aktywności do drugiej wykorzystując intencje
+* druga aktywność powinna wracać informacje do pierwszej o liczbie gwiazdek, po czym w pierwszej aktywności obrazki zostają odpowiednio posortowane po liczbie gwiazdek
+* poprawnie obsługiwać cykl życia aktywności tzn. onCreate, onStart, onResume, onPause, onStop, onDestroy, ... (te które są potrzebne)
+wykorzystywać fragmenty przy zmianie orientacji ekranu
+* zapamiętywać swój stan po zmianie orientacji ekranu
+### Zadanie 2
+Uzupełnij poprzednie zadanie o możliwość robienia zdjęć (obsługa Camera) i dodawania do kolekcji.
