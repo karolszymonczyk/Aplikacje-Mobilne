@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical" android:gravity="center">
+
+
+            <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="com.example.gallery.PhotoFragment"
+                    android:id="@+id/fragment"
+                    tools:layout="@layout/photo_fragment"/>
+            <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:name="com.example.gallery.InfoFragment"
+                    android:id="@+id/fragment2"
+                    tools:layout="@layout/info_fragment"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
+<!--<ImageView-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:scaleType="fitXY"-->
+<!--app:srcCompat="@drawable/pic1"-->
+<!--android:id="@+id/ivPhoto"/>-->
+<!--<LinearLayout-->
+<!--android:orientation="horizontal"-->
+<!--android:layout_marginTop="10dp"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent">-->
+<!--<RatingBar-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:numStars="5"-->
+        <!--android:id="@+id/ratingBar"-->
+<!--/>-->
+<!--<TextView-->
+        <!--android:text="4.5"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" android:id="@+id/tvRating" android:layout_weight="1"-->
+        <!--android:maxLength="4"-->
+        <!--android:textSize="41sp" android:textAlignment="center"/>-->
+<!--</LinearLayout>-->
+<!--<TextView-->
+<!--android:text="jshadfbuksydbfsyubiaysbdukys ksauydg ksuadygf ksuadygf ksuaygf skaduy gksuy gkuy gkuyg kuyg kuyg kuyg mjhv hjcf jhfgc hjkgc khgc "-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content" android:id="@+id/textView2" android:textSize="30sp"/>-->

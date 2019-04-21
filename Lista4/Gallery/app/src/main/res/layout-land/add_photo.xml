@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal">
+        <fragment
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:name="com.example.gallery.PhotoFragment"
+                android:id="@+id/fragment3"
+                tools:layout="@layout/photo_fragment" android:layout_weight="1"/>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:name="com.example.gallery.DescriptionFragment"
+                    android:id="@+id/fragment4"
+                    tools:layout="@layout/description_fragment"/>
+        </ScrollView>
+
+    </LinearLayout>
+</LinearLayout>
