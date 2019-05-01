@@ -40,3 +40,7 @@ wykorzystywać fragmenty przy zmianie orientacji ekranu
 * zapamiętywać swój stan po zmianie orientacji ekranu
 ### Zadanie 2
 Uzupełnij poprzednie zadanie o możliwość robienia zdjęć (obsługa Camera) i dodawania do kolekcji.
+
+## Lista 5
+### Zadanie 1
+Napisz prostą dwuwymiarową grę w tenisa Pong. Wykorzystaj własne View które będzie odpowiedzialne za odświeżanie gry (rysowanie kolejnych klatek animacji gry w onDraw). Do pobierania zdarzeń wykorzystaj metodę np. onTouchEvent. Wszystkie informacje o stanie gry mają być przechowywane w SharedPreferences.
