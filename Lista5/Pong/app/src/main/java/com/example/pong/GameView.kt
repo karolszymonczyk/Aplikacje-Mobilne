@@ -163,7 +163,7 @@ class GameView(context: Context, attributeSet: AttributeSet) : SurfaceView(conte
         textPaint.textAlign = Paint.Align.CENTER
 
         val xP = width / 2f
-        val yP = 3 * height / 4f - (textPaint.descent() + textPaint.ascent()) / 2f //todo ?
+        val yP = 3 * height / 4f - (textPaint.descent() + textPaint.ascent()) / 2f
 
         canvas?.rotate(-180f, width / 2f, height / 2f)
         canvas?.drawText("${game.p1Score}", xP, yP, textPaint)
